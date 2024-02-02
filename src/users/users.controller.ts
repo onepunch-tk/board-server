@@ -5,6 +5,7 @@ import {
   Get,
   Logger,
   Param,
+  ParseIntPipe,
   Patch,
   Post,
 } from '@nestjs/common';
@@ -24,7 +25,7 @@ export class UsersController {
   }
 
   @Get(':id')
-  async getProfile(@Param('id') id: number) {
+  async getProfile(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.getProfile(id);
   }
 
@@ -34,10 +35,10 @@ export class UsersController {
   }
 
   @Delete(':id')
-  async deleteUser(@Param('id') id: number) {
+  async deleteUser(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.deleteUserById(id);
   }
-  @Patch()
+  @Post('sign-in')
   async signIn(@Body() signInRequest: SignInRequest) {
     return this.usersService.signIn(signInRequest);
   }
