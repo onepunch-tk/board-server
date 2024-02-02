@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserRequest } from './dto/requests/create-user-request.dto';
 import { SignInRequest } from './dto/requests/sign-in-request.dto';
 import { UpdatePasswordRequest } from './dto/requests/update-password-request.dto';
-import { DeleteUserRequest } from './dto/requests/delete-user-request.dto';
 import { UserDto } from './dto/user.dto';
 import { CreateUserResponse } from './dto/responses/create-user-response.dto';
 import { passwordHashing } from '../utils/hash.util';
@@ -61,5 +60,9 @@ export class UsersService {
     newPassword,
   }: UpdatePasswordRequest) {}
 
-  async deleteUserById(deleteUserRequest: DeleteUserRequest) {}
+  async deleteUserById(id: number) {}
+
+  async getProfile(id: number) {
+    return Promise.resolve(undefined);
+  }
 }
