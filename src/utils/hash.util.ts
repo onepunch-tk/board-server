@@ -10,7 +10,7 @@ interface IHashingResult extends IBcryptResult {
 
 interface ICompareResult extends IBcryptResult {}
 
-const SALT_ROUND = 15;
+const SALT_ROUND = 10;
 export const passwordHashing = async (
   password: string,
 ): Promise<IHashingResult> => {

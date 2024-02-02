@@ -10,13 +10,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum USER_ROLE {
+  USER
+  ADMIN
+}
+
 model User {
-  id         Int      @id @default(autoincrement())
-  username   String   @unique
+  id         Int       @id @default(autoincrement())
+  username   String    @unique
   hash       String
   nickname   String?
-  isAdmin    Boolean  @default(false)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  isWithDraw Boolean  @default(false)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  isWithDraw Boolean   @default(false)
+  role       USER_ROLE @default(USER)
 }

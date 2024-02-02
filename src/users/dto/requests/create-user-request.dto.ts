@@ -4,7 +4,7 @@ import { PickType } from '@nestjs/mapped-types';
 export class CreateUserRequest extends PickType(UserDto, [
   'username',
   'nickname',
-  'isAdmin',
+  'role',
 ] as const) {
   password: string;
 }
