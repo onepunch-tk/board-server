@@ -8,11 +8,13 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserRequest } from './dto/requests/create-user-request.dto';
 import { SignInRequest } from './dto/requests/sign-in-request.dto';
 import { UpdatePasswordRequest } from './dto/requests/update-password-request.dto';
+import { LocalAuthGuard } from '../auth/local-auth.guard';
 
 @Controller('users')
 export class UsersController {
@@ -24,6 +26,7 @@ export class UsersController {
     return this.usersService.createUser(createUserRequest);
   }
 
+  @UseGuards(LocalAuthGuard)
   @Get(':id')
   async getProfile(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.getProfile(id);
